@@ -28,6 +28,6 @@ RUN yum update -y && yum install -y \
  'socket                 =/var/lib/mysql/mysql.sock\n'\
   > /etc/my.cnf
 
-RUN echo "if [[ ! $(ls -A /usr/local/bin) ]]; then git clone https://github.com/fsugenomics/cruise_scripts /usr/local/bin && update_sql; fi" > /usr/bin/update && chmod +x /usr/bin/update
+RUN echo "if [[ ! $(ls -A /usr/local/bin) ]]; then git clone https://github.com/fsugenomics/cruise_scripts /usr/local/bin; fi ; update_sql" > /usr/bin/update && chmod +x /usr/bin/update
 
 CMD ["update"]
