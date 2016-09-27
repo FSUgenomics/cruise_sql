@@ -29,6 +29,6 @@ RUN yum update -y && yum install -y \
  'socket                 =/var/lib/mysql/mysql.sock\n'\
   > /etc/my.cnf
 
-RUN echo "if [[ ! $(ls -A /usr/local/bin) ]]; then git clone https://github.com/fsugenomics/cruise_scripts /usr/local/bin; fi ; start_sql" > /usr/bin/start && chmod +x /usr/bin/start
+RUN echo 'if [[ ! $(ls -A /usr/local/bin) ]]; then git clone https://github.com/fsugenomics/cruise_scripts /usr/local/bin; fi ; start_sql' > /usr/bin/start && chmod +x /usr/bin/start
 
 CMD ["start"]
