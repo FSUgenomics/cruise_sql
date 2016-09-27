@@ -1,5 +1,5 @@
 
-FROM vera/cruise_base:latest
+FROM centos:7
 
 MAINTAINER "Daniel Vera" vera@genomics.fsu.edu
 VOLUME /var/lib/mysql
@@ -14,7 +14,8 @@ ENV MACHTYPE=x86_64
 ENV PATH=/root/bin/x86_64:/opt/samtabix/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 RUN yum update -y && yum install -y \
- mariadb-server.x86_64
+ mariadb-server.x86_64 \
+ git
 
  RUN echo -e '[mysqld]\n'\
  'user                   =mysql\n'\
@@ -28,6 +29,6 @@ RUN yum update -y && yum install -y \
  'socket                 =/var/lib/mysql/mysql.sock\n'\
   > /etc/my.cnf
 
-RUN echo "if [[ ! $(ls -A /usr/local/bin) ]]; then git clone https://github.com/fsugenomics/cruise_scripts /usr/local/bin; fi ; update_sql" > /usr/bin/update && chmod +x /usr/bin/update
+RUN echo "if [[ ! $(ls -A /usr/local/bin) ]]; then git clone https://github.com/fsugenomics/cruise_scripts /usr/local/bin; fi ; start_sql" > /usr/bin/start && chmod +x /usr/bin/start
 
-CMD ["update"]
+CMD ["start"]
