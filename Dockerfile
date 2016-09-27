@@ -3,7 +3,6 @@ FROM centos:7
 
 MAINTAINER "Daniel Vera" vera@genomics.fsu.edu
 VOLUME /var/lib/mysql
-VOLUME /gbdb
 EXPOSE 3306
 
 ENV CGI_BIN=/var/www/cgi-bin
